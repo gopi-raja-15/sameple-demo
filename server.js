@@ -11,7 +11,7 @@ const PORT = 3000;
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello Worjjjjldghhg Version 1'+process.env.API);
+  res.send('Hello Worjjjjhg Version 1'+process.env.API);
 });
 
 app.get('/api', (req, res) => {
