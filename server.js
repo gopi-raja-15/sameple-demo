@@ -4,6 +4,8 @@ const express = require('express');
 require('dotenv').config();
 const aws = require('aws-sdk');
 const s3 = new aws.S3();
+const fs = require('fs');
+
 // Constants
 const PORT = 3000;
 //const HOST = '0.0.0.0';
@@ -34,7 +36,12 @@ app.get('/api/role', (req, res) => {
 app.get('/create', (req, res) => {
   let path = "./logo.gif"
   fs.readFile(path, async function (err, data) {
-    let params = { Bucket: "sample-test-demo-gopi", Key: Date.now() + '-' + gopi, Body: data };
+    let params = { 
+      Bucket: "sample-test-demo-gopi", 
+      Key: Date.now() + '-' + gopi,
+       Body: data, 
+       serverSideEncryption: 'aws:kms',
+       sseKmsKeyId: "arn:aws:kms:us-west-1:172919200252:key/dffa8ae4-3c53-4619-b5f8-dfe762420ae1" };
     s3.upload(params, function (err, data) {
         if (err) {
             console.log(err);
