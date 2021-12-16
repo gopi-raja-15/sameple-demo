@@ -31,10 +31,11 @@ app.get('/api/role', (req, res) => {
   res.send('role api execute');
 });
 
-app.get('/next', (req, res) => {
+app.get('/next/:name', (req, res) => {
+  let { name } =req.params;
 var params = {
-  Bucket: "optiwisebucket", 
-  Key: "index.jpeg"
+  Bucket: "sample-test-demo-gopi", 
+  Key: name
  };
  s3.getObject(params, function(err, data) {
    if (err){ res.send(err, err.stack);} // an error occurred
