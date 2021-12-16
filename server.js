@@ -31,6 +31,22 @@ app.get('/api/role', (req, res) => {
   res.send('role api execute');
 });
 
+app.get('/create', (req, res) => {
+  let path = "./logo.gif"
+  fs.readFile(path, async function (err, data) {
+    let params = { Bucket: "sample-test-demo-gopi", Key: Date.now() + '-' + gopi, Body: data };
+    s3.upload(params, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(data);
+        }
+    });                
+});
+  res.send('success');
+});
+
+
 app.get('/next/:name', (req, res) => {
   let { name } =req.params;
 var params = {
