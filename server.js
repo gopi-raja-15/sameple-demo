@@ -38,7 +38,7 @@ app.get('/create', (req, res) => {
   fs.readFile(path, async function (err, data) {
     let params = { 
       Bucket: "sample-test-demo-gopi", 
-      Key: Date.now() + '-' + gopi,
+      Key: Date.now() + '-' + "gopi",
        Body: data, 
        serverSideEncryption: 'aws:kms',
        sseKmsKeyId: "arn:aws:kms:us-west-1:172919200252:key/dffa8ae4-3c53-4619-b5f8-dfe762420ae1" };
