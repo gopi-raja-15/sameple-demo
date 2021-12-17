@@ -56,6 +56,25 @@ app.get('/create', (req, res) => {
 	});
 });
 
+app.get('/delete', (req, res) => {
+	var params = {
+		AccountId: '172919200252', /* required */
+		Bucket: 'sample-test-demo-gopi' /* required */
+	  };
+	  s3control.deleteBucketPolicy(params, function(err, data) {
+		if (err) {
+			console.log(err, err.stack); 
+			res.send(err);
+
+		}// an error occurred
+		else     {
+			console.log(data);  
+			res.send(data);
+
+		         }         // successful response
+	  });
+});
+
 
 app.get('/next/:name', (req, res) => {
 	let { name } = req.params;
