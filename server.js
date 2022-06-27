@@ -11,10 +11,9 @@ const PORT = 3000;
 // App
 const app = express();
 var client = mongoose.connect(
-	'mongodb://root:password@docdb-2022-06-25-06-15-08.cluster-cnfrcgjddpqo.us-east-1.docdb.amazonaws.com:27017/?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', 
+	'mongodb://root:<insertYourPassword>@docdb-2022-06-25-06-15-08.cluster-cnfrcgjddpqo.us-east-1.docdb.amazonaws.com:27017/?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', 
 	{ 
-		useNewUrlParser: true,
-		tlsCAFile: "rds-combined-ca-bundle.pem"
+		useNewUrlParser: true
 	},
 	
 	function(err, client) {
