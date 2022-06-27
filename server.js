@@ -2,6 +2,7 @@
 
 const express = require('express');
 require('dotenv').config();
+const mongoose = require("mongoose");
 
 // Constants
 const PORT = 3000;
@@ -9,6 +10,25 @@ const PORT = 3000;
 
 // App
 const app = express();
+var client = mongoose.connect(
+	'mongodb://root:password@docdb-2022-06-25-06-15-08.cluster-cnfrcgjddpqo.us-east-1.docdb.amazonaws.com:27017/?ssl=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', 
+	{ 
+		useNewUrlParser: true,
+		tlsCAFile: "rds-combined-ca-bundle.pem"
+	},
+	
+	function(err, client) {
+		if(err){
+			console.log(JSON.stringify(err))
+			throw err;
+		}
+		console.log("DB Connected")
+		//Specify the database to be used
+		// db = client.db('sample-database');
+
+		
+	});
+
 app.get('/', (req, res) => {
 	console.log("Hit------------->1")
 	res.send('Hello World Version 1' + process.env.API);
