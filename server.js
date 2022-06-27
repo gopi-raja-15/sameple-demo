@@ -18,10 +18,13 @@ var client = mongoose.connect(
 	
 	function(err, client) {
 		if(err){
+			console.log("DB not Connected")
+
 			console.log(JSON.stringify(err))
 			throw err;
-		}
+		} else {
 		console.log("DB Connected")
+		}
 		//Specify the database to be used
 		// db = client.db('sample-database');
 
